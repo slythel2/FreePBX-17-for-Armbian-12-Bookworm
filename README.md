@@ -4,6 +4,16 @@ A vibe-coded, "one-click" installer for Asterisk 21 and FreePBX 17 on Debian 12 
 
 **Disclaimer:** This is an amateur project created solely for my personal workflow to quickly deploy PBX systems on T95 Max+ TV boxes. I am hosting it here for my own convenience and storage. I do not expect anyone else to use this. It works for me, but it might not work for you. Use entirely at your own risk.
 
+## **FreePBX 17 & Asterisk 21 Installer**
+**Installation**
+Requires a clean Armbian (Debian 12 Bookworm ARM64) installation and root access.
+
+```bash
+wget https://raw.githubusercontent.com/slythel2/FreePBX-17-for-Armbian-12-Bookworm/refs/heads/main/install.sh
+chmod +x install.sh
+./install.sh
+```
+
 ## (Extra Content) Armbian 12 Image for T95 Max+ Android TV Box
 <img src="https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648" width="25%">
 
@@ -14,15 +24,6 @@ You will also find a custom Armbian image in the **Releases** section of this re
 * **Status:** Heavy WIP. Not polished, but functional for this project **IF YOU HAVE EXACTLY THE SAME TV BOX**
 * **Features:** 2GB swap already configured.
 
-## **FreePBX 17 & Asterisk 21 Installer**
-**Installation**
-Requires a clean Armbian (Debian 12 Bookworm ARM64) installation and root access.
-
-```bash
-wget https://raw.githubusercontent.com/slythel2/FreePBX-17-for-Armbian-12-Bookworm/refs/heads/main/install.sh
-chmod +x install.sh
-./install.sh
-```
 ## Features
 * **One Click Install:** Every dependency Asterisk or FreePBX needs will be installed aswell.
 * **Fast Deployment:** Uses pre-compiled Asterisk 21 artifacts to skip long compilation times.
