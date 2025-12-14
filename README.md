@@ -16,8 +16,7 @@ Requires a clean Armbian (Debian 12) installation and root access.
 wget [https://raw.githubusercontent.com/slythel2/Armbian-FreePBX-17/main/install.sh](https://raw.githubusercontent.com/slythel2/Armbian-FreePBX-17/main/install.sh)
 chmod +x install.sh
 ./install.sh
-
-
+```
 Access
 Web Interface: http://<YOUR_IP>/admin
 
