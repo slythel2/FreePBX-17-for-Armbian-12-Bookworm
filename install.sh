@@ -131,6 +131,11 @@ a2enmod rewrite
 systemctl restart apache2
 
 log "Configuring Database..."
+# FORCE DB START (Fixes issues after cleanup/soft-reset)
+systemctl enable mariadb
+systemctl start mariadb 
+sleep 2
+
 mysqladmin -u root password "$DB_ROOT_PASS" 2>/dev/null || true
 
 # Pre-create Asterisk DB User
