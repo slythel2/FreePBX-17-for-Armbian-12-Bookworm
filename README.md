@@ -25,6 +25,17 @@ Web Interface: http://<YOUR_IP>/admin
 
 MariaDB Root Password: armbianpbx
 
+
+## (Extra Content) Armbian 12 Image for T95 Max+ Android TV Box
+<img src="https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648" width="30%">
+
+You will also find a custom Armbian image in the **Releases** section of this repo.
+* **Source:** Derived from ophub builds.
+* **Target:** T95 Max+ (Amlogic S905X3 SoC).
+* **Why:** I included a custom **auto-install script** that automatically corrects paths and selects the correct options and configurations specifically for this TV box.
+* **Status:** Heavy WIP. Not polished, but functional for this project **IF YOU HAVE EXACTLY THE SAME TV BOX**
+* **Features:** 2GB swap already configured.
+
 Note for T95 Max+
 
 SD card boot should always be the priority as far as I know.
@@ -39,16 +50,6 @@ dd if=/dev/zero of=/dev/mmcblk2 bs=1M count=1
 sync
 }
 ```
-
-## (Extra Content) Armbian 12 Image for T95 Max+ Android TV Box
-<img src="https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648" width="30%">
-
-You will also find a custom Armbian image in the **Releases** section of this repo.
-* **Source:** Derived from ophub builds.
-* **Target:** T95 Max+ (Amlogic S905X3 SoC).
-* **Why:** I included a custom **auto-install script** that automatically corrects paths and selects the correct options and configurations specifically for this TV box.
-* **Status:** Heavy WIP. Not polished, but functional for this project **IF YOU HAVE EXACTLY THE SAME TV BOX**
-* **Features:** 2GB swap already configured.
 
 Credits
 
