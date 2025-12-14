@@ -5,7 +5,8 @@ A vibe-coded, "one-click" installer for Asterisk 21 and FreePBX 17 on Debian 12 
 **Disclaimer:** This is an amateur project created solely for my personal workflow to quickly deploy PBX systems on T95 Max+ TV boxes. I am hosting it here for my own convenience and storage. I do not expect anyone else to use this. It works for me, but it might not work for you. Use entirely at your own risk.
 
 ## (Extra Content) Armbian 12 Image!
-[rBVakl8yZb2AOJ5HAAMkB6t6yrI101](https://github.com/user-attachments/assets/de9ee7af-4bf6-4499-ac5e-cfcec1aca4a3)
+![alt text](https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648)
+
 You will also find a custom Armbian image in the **Releases** section of this repo.
 * **Source:** Derived from ophub builds.
 * **Target:** T95 Max+ (Amlogic S905X3 SoC).
