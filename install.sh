@@ -5,13 +5,15 @@
 # TARGET:   Debian 12 (Bookworm)
 # STACK:    Asterisk 21 (Pre-compiled) + FreePBX 17 + PHP 8.2
 # AUTHOR:   Gemini & slythel2
-# DATE:     2025-12-14 (V5.4 Final Stability)
+# DATE:     2025-12-14 (V5.6 Final - Fully Documented)
 # ============================================================================
 
 # --- 1. USER CONFIGURATION ---
 ASTERISK_ARTIFACT_URL="https://github.com/slythel2/FreePBX-17-for-Armbian-12-Bookworm/releases/download/1.0/asterisk-21.12.0-arm64-debian12-v2.tar.gz"
 
 # Database root password
+# SECURITY WARNING: This password is hardcoded for installation convenience.
+# It is highly recommended to change it after installation!
 DB_ROOT_PASS="armbianpbx"
 
 # --- END CONFIGURATION ---
@@ -84,12 +86,15 @@ rm asterisk_artifact.tar.gz
 
 # --- CRITICAL FIX: LIBRARIES & PERMISSIONS ---
 log "Linking libraries and fixing permissions..."
-# Force library cache update
+# Force library cache update so system finds libasteriskssl.so
 echo "/usr/lib" > /etc/ld.so.conf.d/asterisk.conf
 ldconfig
 
 # Create PID directory to prevent startup loop errors
 mkdir -p /var/run/asterisk
+
+# SECURITY NOTE: Asterisk requires write access to its own runtime directories.
+# Without this, the process cannot create PID files or load modules.
 chown -R asterisk:asterisk /var/run/asterisk
 chown -R asterisk:asterisk /var/lib/asterisk /var/spool/asterisk /var/log/asterisk /etc/asterisk /usr/lib/asterisk
 
@@ -128,8 +133,15 @@ systemctl start asterisk
 
 # --- 7. APACHE & DATABASE SETUP ---
 log "Configuring Apache..."
+# Apache must run as 'asterisk' user so the Web GUI can write config files
 sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/apache2/apache2.conf
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
+# PRIORITY FIX: Tell Apache to load index.php BEFORE index.html
+if [ -f /etc/apache2/mods-enabled/dir.conf ]; then
+    sed -i 's/DirectoryIndex index.html/DirectoryIndex index.php index.html/' /etc/apache2/mods-enabled/dir.conf
+fi
+
 a2enmod rewrite
 systemctl restart apache2
 
@@ -171,8 +183,23 @@ fwconsole ma installall
 fwconsole chown
 fwconsole reload
 
-# Remove default Apache index so FreePBX appears immediately
+# Remove default Apache index
 rm -f /var/www/html/index.html
+
+# --- FINAL PERMISSION SAFETY NET ---
+log "Applying final permission fixes..."
+# ARCHITECTURAL NOTE:
+# FreePBX Architecture requires the Apache User (asterisk) to have WRITE access
+# to specific directories to function correctly.
+# - /var/log/asterisk: To write application logs (otherwise crashes occur).
+# - /etc/asterisk: To generate and write config files (extensions.conf, etc).
+# - /var/www/html: To self-update modules and manage web assets.
+mkdir -p /var/log/asterisk
+chown -R asterisk:asterisk /var/log/asterisk
+chown -R asterisk:asterisk /var/lib/asterisk
+chown -R asterisk:asterisk /var/spool/asterisk
+chown -R asterisk:asterisk /etc/asterisk
+chown -R asterisk:asterisk /var/www/html
 
 echo ""
 echo "========================================================"
