@@ -13,6 +13,7 @@ wget https://raw.githubusercontent.com/slythel2/FreePBX-17-for-Armbian-12-Bookwo
 chmod +x install.sh
 ./install.sh
 ```
+Simply copy and paste.
 
 ## Features
 * **One Click Install:** Every dependency Asterisk or FreePBX needs will be installed aswell.
