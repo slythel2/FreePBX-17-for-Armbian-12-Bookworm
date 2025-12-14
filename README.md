@@ -14,8 +14,8 @@ You will also find a custom Armbian image in the **Releases** section of this re
 * **Status:** Heavy WIP. Not polished, but functional for this project **IF YOU HAVE EXACTLY THE SAME TV BOX**
 * **Features:** 2GB swap already configured.
 
-## FreePBX 17 & Asterisk 21 Installer
-# **Installation**
+## **FreePBX 17 & Asterisk 21 Installer**
+**Installation**
 Requires a clean Armbian (Debian 12 Bookworm ARM64) installation and root access.
 
 ```bash
