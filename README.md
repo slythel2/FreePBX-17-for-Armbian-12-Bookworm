@@ -14,16 +14,6 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## (Extra Content) Armbian 12 Image for T95 Max+ Android TV Box
-<img src="https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648" width="25%">
-
-You will also find a custom Armbian image in the **Releases** section of this repo.
-* **Source:** Derived from ophub builds.
-* **Target:** T95 Max+ (Amlogic S905X3 SoC).
-* **Why:** I included a custom **auto-install script** that automatically corrects paths and selects the correct options and configurations specifically for this TV box.
-* **Status:** Heavy WIP. Not polished, but functional for this project **IF YOU HAVE EXACTLY THE SAME TV BOX**
-* **Features:** 2GB swap already configured.
-
 ## Features
 * **One Click Install:** Every dependency Asterisk or FreePBX needs will be installed aswell.
 * **Fast Deployment:** Uses pre-compiled Asterisk 21 artifacts to skip long compilation times.
@@ -50,6 +40,15 @@ sync
 }
 ```
 
+## (Extra Content) Armbian 12 Image for T95 Max+ Android TV Box
+<img src="https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648" width="25%">
+
+You will also find a custom Armbian image in the **Releases** section of this repo.
+* **Source:** Derived from ophub builds.
+* **Target:** T95 Max+ (Amlogic S905X3 SoC).
+* **Why:** I included a custom **auto-install script** that automatically corrects paths and selects the correct options and configurations specifically for this TV box.
+* **Status:** Heavy WIP. Not polished, but functional for this project **IF YOU HAVE EXACTLY THE SAME TV BOX**
+* **Features:** 2GB swap already configured.
 
 Credits
 
