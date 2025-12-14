@@ -20,7 +20,7 @@ You will also find a custom Armbian image in the **Releases** section of this re
 Requires a clean Armbian (Debian 12) installation and root access.
 
 ```bash
-wget [https://raw.githubusercontent.com/slythel2/Armbian-FreePBX-17/main/install.sh](https://raw.githubusercontent.com/slythel2/Armbian-FreePBX-17/main/install.sh)
+wget https://raw.githubusercontent.com/slythel2/FreePBX-17-for-Armbian-12-Bookworm/refs/heads/main/install.sh
 chmod +x install.sh
 ./install.sh
 ```
