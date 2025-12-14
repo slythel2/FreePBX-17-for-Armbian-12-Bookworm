@@ -47,6 +47,6 @@ Credits
 
 slythel2,
 
-Amlogic (for the base image),
+ophub (for the base image),
 
 FreePBX & Asterisk Open Source Projects.
