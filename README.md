@@ -2,7 +2,7 @@
 
 A vibe-coded, "one-click" installer for Asterisk 21 and FreePBX 17 on Debian 12 (ARM64).
 
-**Disclaimer:** This is an amateur project created solely for my personal workflow to quickly deploy PBX systems on T95 Max+ TV boxes. I am hosting it here for my own convenience and storage. I do not expect anyone else to use this. It works for me, **it should work on every ARM64 Debian 12 device** but it might not work for you. Use entirely at your own risk.
+**Disclaimer:** This is an amateur project created solely for my personal workflow to quickly deploy PBX systems on T95 Max+ TV boxes. I am hosting it here for my own convenience and storage. It works for me, **it should work on every ARM64 Debian 12 device** but it might not work for you. Use entirely at your own risk.
 
 ## **FreePBX 17 & Asterisk 21 Installer**
 **Installation**
