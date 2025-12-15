@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # ============================================================================
-# PROJECT:  Armbian PBX "One-Click" Installer (T95 Max+ / ARM64)
-# TARGET:   Debian 12 (Bookworm)
-# STACK:    Asterisk 21 (Pre-compiled) + FreePBX 17 + PHP 8.2
-# AUTHOR:   Gemini & slythel2
-# DATE:     2025-12-14 (V6.0)
+# PROJECT:   Armbian PBX "One-Click" Installer (T95 Max+ / ARM64)
+# TARGET:    Debian 12 (Bookworm)
+# STACK:     Asterisk 21 (Pre-compiled) + FreePBX 17 + PHP 8.2
+# AUTHOR:    Gemini & slythel2
+# DATE:      2025-12-14 (V6.0)
 # ============================================================================
 
 # --- 1. USER CONFIGURATION ---
@@ -33,7 +33,7 @@ if [[ $EUID -ne 0 ]]; then echo "Run as root!"; exit 1; fi
 
 clear
 echo "========================================================"
-echo "   ARM64 PBX AUTO-INSTALLER (DEBIAN 12) V6.0             "
+echo "   ARM64 PBX AUTO-INSTALLER (DEBIAN 12) V6.0            "
 echo "========================================================"
 sleep 3
 
@@ -43,13 +43,13 @@ apt-get update && apt-get upgrade -y
 
 # Dependencies updated: added acl (Critical for permissions), pkg-config, libicu-dev, libedit2
 apt-get install -y \
-    git curl wget vim htop subversion sox pkg-config \
-    apache2 mariadb-server mariadb-client \
-    libxml2 libsqlite3-0 libjansson4 libedit2 libxslt1.1 \
-    libopus0 libvorbis0a libspeex1 libspeexdsp1 libgsm1 \
-    unixodbc odbcinst libltdl7 libicu-dev \
-    nodejs npm acl \
-    || error "Failed to install base packages"
+    git curl wget vim htop subversion sox pkg-config \
+    apache2 mariadb-server mariadb-client \
+    libxml2 libsqlite3-0 libjansson4 libedit2 libxslt1.1 \
+    libopus0 libvorbis0a libspeex1 libspeexdsp1 libgsm1 \
+    unixodbc odbcinst libltdl7 libicu-dev \
+    nodejs npm acl \
+    || error "Failed to install base packages"
 
 # CRITICAL FIX: Install PM2 explicitly (Required by FreePBX 17 process manager)
 log "Installing PM2..."
@@ -58,10 +58,10 @@ npm install -g pm2@latest || error "Failed to install PM2"
 # --- 3. PHP 8.2 STACK & TUNING ---
 log "Installing PHP 8.2..."
 apt-get install -y \
-    php php-cli php-common php-curl php-gd php-mbstring \
-    php-mysql php-soap php-xml php-intl php-zip php-bcmath \
-    php-ldap php-pear libapache2-mod-php \
-    || error "Failed to install PHP"
+    php php-cli php-common php-curl php-gd php-mbstring \
+    php-mysql php-soap php-xml php-intl php-zip php-bcmath \
+    php-ldap php-pear libapache2-mod-php \
+    || error "Failed to install PHP"
 
 log "Tuning PHP parameters..."
 sed -i 's/memory_limit = .*/memory_limit = 256M/' /etc/php/8.2/apache2/php.ini
@@ -73,8 +73,8 @@ sed -i 's/memory_limit = .*/memory_limit = 256M/' /etc/php/8.2/cli/php.ini
 log "Creating system user..."
 if ! getent group asterisk >/dev/null; then groupadd asterisk; fi
 if ! getent passwd asterisk >/dev/null; then
-    useradd -r -d /var/lib/asterisk -g asterisk asterisk
-    usermod -aG audio,dialout asterisk
+    useradd -r -d /var/lib/asterisk -g asterisk asterisk
+    usermod -aG audio,dialout asterisk
 fi
 
 # --- 5. ASTERISK INSTALL (FROM ARTIFACT) ---
@@ -134,7 +134,7 @@ sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/apache2/apache2.conf
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 if [ -f /etc/apache2/mods-enabled/dir.conf ]; then
-    sed -i 's/DirectoryIndex index.html/DirectoryIndex index.php index.html/' /etc/apache2/mods-enabled/dir.conf
+    sed -i 's/DirectoryIndex index.html/DirectoryIndex index.php index.html/' /etc/apache2/mods-enabled/dir.conf
 fi
 
 a2enmod rewrite
@@ -163,11 +163,11 @@ cd freepbx
 
 log "Running FreePBX Installer..."
 ./install -n \
-    --dbuser asterisk \
-    --dbpass "$DB_ROOT_PASS" \
-    --webroot /var/www/html \
-    --user asterisk \
-    --group asterisk
+    --dbuser asterisk \
+    --dbpass "$DB_ROOT_PASS" \
+    --webroot /var/www/html \
+    --user asterisk \
+    --group asterisk
 
 # --- 9. PHP 8.2 CRITICAL COMPILATION FIXES ---
 log "Applying critical PHP 8.2 compilation patches..."
@@ -259,7 +259,7 @@ fwconsole reload
 
 echo ""
 echo "========================================================"
-echo "   INSTALLATION COMPLETE! (V6.0 - RELOAD SUCCESS)       "
+echo "   INSTALLATION COMPLETE! (V6.0 - RELOAD SUCCESS)       "
 echo "========================================================"
 echo "Web Access: http://$(hostname -I | cut -d' ' -f1)/admin"
 echo "DB Root Password: $DB_ROOT_PASS"
