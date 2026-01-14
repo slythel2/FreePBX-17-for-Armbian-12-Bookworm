@@ -53,6 +53,7 @@ You can still force USB boot by nuking the eMMC:
 dd if=/dev/zero of=/dev/mmcblk2 bs=1M count=1 && sync
 ```
 and /reboot right after.
+
 SD card boot, though, should always be the priority and boot from SD should work as far as I know.
 
 
