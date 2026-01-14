@@ -57,7 +57,8 @@ and /reboot right after.
 SD card boot, though, should always be the priority and boot from SD should work as far as I know.
 
 
-Credits
+
+**Credits**
 
 slythel2,
 
