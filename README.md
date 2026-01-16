@@ -18,7 +18,7 @@ Simply copy and paste.
 ## Features
 * **One Click Install:** Every dependency Asterisk or FreePBX needs will be installed aswell.
 * **Fast Deployment:** Uses pre-compiled Asterisk 21 artifacts to skip long compilation times.
-* **Modern Stack:** Debian 12 (Bookworm), FreePBX 17, PHP 8.2.
+* **Solid Stack:** Debian 12 (Bookworm), FreePBX 17, PHP 8.2.
 
 
 Access
@@ -27,7 +27,8 @@ Web Interface: http://<YOUR_IP>/admin
 MariaDB Root Password: armbianpbx
 
 
-## (Extra Content) Armbian 12 Image for T95 Max+ Android TV Box
+## (Extra Content) 
+## Armbian 12 Image for T95 Max+ Android TV Box
 <img src="https://github.com/user-attachments/assets/dd161989-dca9-49a2-a757-504306ed0648" width="30%">
 
 You will also find a custom Armbian image in the **Releases** section of this repo.
