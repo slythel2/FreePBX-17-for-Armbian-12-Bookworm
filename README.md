@@ -15,6 +15,15 @@ chmod +x install.sh
 ```
 Simply copy and paste.
 
+## Uninstall Script
+
+```bash
+wget https://raw.githubusercontent.com/slythel2/FreePBX-17-for-Armbian-12-Bookworm/refs/heads/main/uninstall.sh
+chmod +x uninstall.sh
+./uninstall.sh
+```
+This script completely removes the Asterisk, FreePBX, LAMP stack.
+
 ## Features
 * **One Click Install:** Every dependency Asterisk or FreePBX needs will be installed aswell.
 * **Fast Deployment:** Uses pre-compiled Asterisk 21 artifacts to skip long compilation times.
