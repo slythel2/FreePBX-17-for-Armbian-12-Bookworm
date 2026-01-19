@@ -1,4 +1,4 @@
-name: Build Asterisk ARM64
+name: Build Asterisk ARM64 Native
 
 on:
   workflow_dispatch:
@@ -15,37 +15,29 @@ permissions:
 
 jobs:
   build-asterisk:
-    runs-on: ubuntu-latest
-    name: Build Asterisk ${{ inputs.asterisk_version || '22-current' }}
+    runs-on: ubuntu-24.04-arm
+    container:
+      image: debian:bookworm
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup QEMU (ARM64 Emulation)
-        uses: docker/setup-qemu-action@v3
+      - name: Prepare Build Environment
+        run: |
+          apt-get update
+          apt-get install -y git curl wget build-essential sudo
 
-      - name: Build in Debian 12 ARM64 Container
-        id: build
-        uses: uraimo/run-on-arch-action@v2
-        with:
-          arch: aarch64
-          distro: bookworm
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          dockerRunArgs: |
-            --volume "${PWD}:/workspace"
-            --shm-size=2g
-          run: |
-            chmod +x /workspace/builder_script.sh
-            /workspace/builder_script.sh "${{ inputs.asterisk_version || '22-current' }}"
+      - name: Run Builder Script (Native Mode)
+        run: |
+          chmod +x builder_script.sh
+          ./builder_script.sh "${{ inputs.asterisk_version || '22-current' }}"
 
       - name: Upload Release to GitHub
-        if: success()
         uses: softprops/action-gh-release@v1
         with:
           tag_name: build-${{ github.run_number }}
-          name: "Asterisk Auto-Build #${{ github.run_number }}"
-          body: "Automated build of Asterisk ${{ inputs.asterisk_version || '22-current' }} for ARM64 (Debian 12)."
+          name: "Asterisk Native Build #${{ github.run_number }}"
           files: asterisk-*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
