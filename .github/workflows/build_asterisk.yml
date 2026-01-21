@@ -56,7 +56,7 @@ jobs:
           tag_name: asterisk-${{ steps.version.outputs.version }}-build${{ github.run_number }}
           name: "Asterisk 22 LTS ARM64 Build - v${{ steps.version.outputs.version }}"
           body: |
-            ## 📦 Asterisk 22 LTS - ARM64 Debian 12 (Bookworm)
+            ## Asterisk 22 LTS - ARM64 Debian 12 (Bookworm)
             
             **Version:** `${{ steps.version.outputs.version }}`  
             **Architecture:** ARM64 (aarch64)  
@@ -64,19 +64,7 @@ jobs:
             **Build Date:** ${{ steps.version.outputs.build_date }}  
             **Build Number:** #${{ github.run_number }}
             
-            ### 🚀 Installation
-            
-            Use with the FreePBX 17 installer:
-            ```bash
-            sudo bash install.sh
-            ```
-            
-            Or update an existing installation:
-            ```bash
-            sudo bash install.sh --update
-            ```
-            
-            ### 📋 Artifact
+            ###  Artifact
             
             - **File:** `${{ steps.version.outputs.tarball }}`
             - **Platform:** Native ARM64 build optimized for Armbian/Debian Bookworm
