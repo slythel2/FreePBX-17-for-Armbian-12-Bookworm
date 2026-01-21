@@ -26,7 +26,7 @@ error() { echo -e "${RED}[ERROR] $1${NC}" | tee -a "$LOG_FILE"; exit 1; }
 
 if [[ $EUID -ne 0 ]]; then echo "Run as root!"; exit 1; fi
 
-# --- UPDATER - Surgical Update Mode ---
+# --- UPDATER ---
 if [[ "$1" == "--update" ]]; then
     log "Starting Asterisk 22 Surgical Update..."
     
@@ -396,7 +396,7 @@ if command -v fwconsole &> /dev/null; then
     fwconsole ma downloadinstall ucp &>/dev/null || true
     fwconsole ma downloadinstall userman &>/dev/null || true
     
-    # Application modules (vital for PBX functionality)
+    # Application modules
     fwconsole ma downloadinstall announcement &>/dev/null || true
     fwconsole ma downloadinstall calendar &>/dev/null || true
     fwconsole ma downloadinstall callrecording &>/dev/null || true
