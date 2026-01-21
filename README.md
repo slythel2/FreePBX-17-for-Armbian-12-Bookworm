@@ -6,6 +6,7 @@ A Github Workflow runs every 8 weeks, compiles the newest Asterisk 22 LTS releas
 
 ## **FreePBX 17 & Asterisk 22 Installer**
 **Installation**
+
 Requires a clean Armbian (Debian 12 Bookworm ARM64) installation and root access.
 
 ```bash
