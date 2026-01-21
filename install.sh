@@ -484,7 +484,7 @@ APACHE_STATUS=$(check_service apache2)
 
 # Display Banner
 echo -e "${BLUE}================================================================${NC}"
-echo -e "${BLUE}   ARMBIAN PBX - ASTERISK 22 + FREEPBX 17 (ARM64)${NC}"
+echo -e "${BLUE}        ARMBIAN PBX - ASTERISK 22 + FREEPBX 17 (ARM64)${NC}"
 echo -e "${BLUE}================================================================${NC}"
 echo -e ""
 echo -e " ${YELLOW}Web Interface:${NC}  http://$IP_ADDR/admin"
